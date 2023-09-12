@@ -17,4 +17,9 @@
 	```
 1. Download the MuJoCo GUI package using the link: [https://github.com/google-deepmind/mujoco/releases](https://github.com/google-deepmind/mujoco/releases
 2. Now MuJoCo is ready for use.
+	`conda install scipy`\
+	`conda install matplotlib`\
+	`pip install mujoco`\
+5. Download the MuJoCo GUI package using the link: [https://github.com/google-deepmind/mujoco/releases](https://github.com/google-deepmind/mujoco/releases
+6. Now MuJoCo is ready for use.
 
