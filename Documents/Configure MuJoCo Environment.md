@@ -13,6 +13,7 @@
 3. Activate the environment using the command below:
 	`conda activate mujoco`
 4. Install required libraries:
+
 	Use the commands below to install all required libraries, run lines one by one:
 	```
 	conda install scipy
