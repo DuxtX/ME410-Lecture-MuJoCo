@@ -19,9 +19,11 @@ Download and install [Anaconda](https://www.anaconda.com/download) from their of
 
 ## 3. Install MuJoCo Python bindings
 1. Open the Anaconda Prompt from the Start menu;
-2. Create a new environment using the command below:
+2. Create a new environment using the command:
+   
 	`conda create --name mujoco python=3.9`
-3. Activate the environment using the command below:
+3. Activate the environment using the command:
+
 	`conda activate mujoco`
 4. Install required dependencies:
 
