@@ -13,7 +13,7 @@
    
 3. For Windows, unzip the package, run the simulator GUI in './bin/simulate.exe';
 4. 
-   For MAC OS, open the .dmg package, run the simulator GUI 'simulate' .
+   For Mac OS, open the .dmg package, run the simulator GUI 'simulate' .
 
 ## 3. Install MuJoCo Python bindings
 1. Open the Anaconda Prompt from the Start menu;
