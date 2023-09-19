@@ -10,10 +10,11 @@
    For Mac OS, download using [Link](https://github.com/google-deepmind/mujoco/releases/download/2.3.7/mujoco-2.3.7-macos-universal2.dmg);
    
    For Linux, download using [Link](https://github.com/google-deepmind/mujoco/releases/download/2.3.7/mujoco-2.3.7-linux-aarch64.tar.gz).
+2. Run the 'simulate' in the package to start the simulator GUI:
    
-3. For Windows, unzip the package, run the simulator GUI in './bin/simulate.exe';
-4. 
-   For Mac OS, open the .dmg package, run the simulator GUI 'simulate' .
+   For Windows, unzip the package, the application is located in './bin/simulate.exe';
+
+   For Mac OS, double-click the '.dmg' package, the application is located under the root folder.
 
 ## 3. Install MuJoCo Python bindings
 1. Open the Anaconda Prompt from the Start menu;
