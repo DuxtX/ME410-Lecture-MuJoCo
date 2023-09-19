@@ -1,7 +1,7 @@
 ## 1. Install Python (skip if you already have Python installed)
-1. Download and install [Anaconda](https://www.anaconda.com/download) from their official website: 
-	 - [miniconda](https://docs.conda.io/projects/miniconda/en/latest/) also works for less disk space consumption;
-	 - Install with all default settings;
+Download and install [Anaconda](https://www.anaconda.com/download) from their official website: 
+	- [miniconda](https://docs.conda.io/projects/miniconda/en/latest/) also works for less disk space consumption;
+	- Install with all default settings;
 ## 2. Download MuJoCo package
 1. Download the package from MuJoCo official website [https://github.com/google-deepmind/mujoco/releases](https://github.com/google-deepmind/mujoco/releases), select the correct version based on your operating system.
 
