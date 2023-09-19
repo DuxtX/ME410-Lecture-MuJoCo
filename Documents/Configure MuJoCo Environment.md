@@ -7,14 +7,14 @@
 2. Unzip the package, you should be able to run the simulator GUI in './bin/simulate.exe'
 
 ## 3. Install MuJoCo Python bindings
-1. Open the Anaconda Prompt from Start menu;
+1. Open the Anaconda Prompt from the Start menu;
 2. Create a new environment using the command below:
 	`conda create --name mujoco python=3.9`
 3. Activate the environment using the command below:
 	`conda activate mujoco`
-4. Install required libraries:
+4. Install required dependencies:
 
-	Use the commands below to install all required libraries, run lines one by one:
+	Use the commands below to install all required libraries, and run lines one by one:
 	```
 	conda install scipy
 	conda install matplotlib
