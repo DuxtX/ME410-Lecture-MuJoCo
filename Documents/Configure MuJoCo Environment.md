@@ -21,7 +21,7 @@
 	pip install mujoco
 	```
 5. Now MuJoCo is ready for use.
-6. Download the MuJoCo GUI package using the link: [https://github.com/google-deepmind/mujoco/releases](https://github.com/google-deepmind/mujoco/releases
+6. Download the MuJoCo GUI package using the link: [https://github.com/google-deepmind/mujoco/releases](https://github.com/google-deepmind/mujoco/releases)
 7. Now MuJoCo is ready for use.
 
 ## Useful links:
