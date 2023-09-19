@@ -10,7 +10,7 @@
    For Mac OS, download using [Link](https://github.com/google-deepmind/mujoco/releases/download/2.3.7/mujoco-2.3.7-macos-universal2.dmg);
    
    For Linux, download using [Link](https://github.com/google-deepmind/mujoco/releases/download/2.3.7/mujoco-2.3.7-linux-aarch64.tar.gz).
-2. Run the 'simulate' in the package to start the simulator GUI:
+2. Run the 'simulate' application in the package to start the simulator GUI:
    
    For Windows, unzip the package, the application is located in './bin/simulate.exe';
 
