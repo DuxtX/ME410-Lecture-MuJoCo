@@ -3,8 +3,12 @@
 	 - [miniconda](https://docs.conda.io/projects/miniconda/en/latest/) also works for less disk space consumption;
 	 - Install with all default settings;
 ## 2. Download MuJoCo package
-1. Download the package from MuJoCo official website [https://github.com/google-deepmind/mujoco/releases](https://github.com/google-deepmind/mujoco/releases)
-2. Unzip the package, you should be able to run the simulator GUI in './bin/simulate.exe'
+1. Download the package from MuJoCo official website [https://github.com/google-deepmind/mujoco/releases](https://github.com/google-deepmind/mujoco/releases), select the correct version based on your operating system.
+   For Windows, download using [Link](https://github.com/google-deepmind/mujoco/releases/download/2.3.7/mujoco-2.3.7-windows-x86_64.zip);
+   For Mac OS, download using [Link](https://github.com/google-deepmind/mujoco/releases/download/2.3.7/mujoco-2.3.7-macos-universal2.dmg);
+   For Linux, download using [Link](https://github.com/google-deepmind/mujoco/releases/download/2.3.7/mujoco-2.3.7-linux-aarch64.tar.gz).
+3. For Windows, unzip the package, you should be able to run the simulator GUI in './bin/simulate.exe';
+   For MAC OS, open the .dmg package, you should be able to run the simulator GUI by double-clicking the 'simulate' .
 
 ## 3. Install MuJoCo Python bindings
 1. Open the Anaconda Prompt from the Start menu;
