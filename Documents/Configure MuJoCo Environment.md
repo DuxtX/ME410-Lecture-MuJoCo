@@ -1,3 +1,7 @@
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\includegraphics[width = .05\textwidth]{logo.png}}
+
 ## 1. Install Python (skip if you already have Python installed)
 Download and install [Anaconda](https://www.anaconda.com/download) from their official website: 
 
