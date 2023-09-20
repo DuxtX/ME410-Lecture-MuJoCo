@@ -4,7 +4,7 @@
 1. Download and install [Anaconda](https://www.anaconda.com/download) from their official website: 
 
    * [miniconda](https://docs.conda.io/projects/miniconda/en/latest/) also works with less disk space consumption;
-   * Install with all default settings;
+   * **Please install with all default settings**;
 2. Initialize conda in terminal (you may skip this step if you are not familiar with the system terminal configuration)
    
    * Windows: 
