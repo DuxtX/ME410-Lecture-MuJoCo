@@ -1,0 +1,261 @@
+<!--
+ Created on Thu Aug 24 2023
+
+ Copyright (c) Yuhao
+-->
+
+<mujoco model="3dof_3modules">
+    <asset>
+        <mesh name="body1_mesh" file="Body1.stl"/>
+        <mesh name="body2_mesh" file="Body2.stl"/>
+        <mesh name="body3_mesh" file="Body3.stl"/>
+        <mesh name="body4_mesh" file="Body4.stl"/>
+        <mesh name="body5_mesh" file="Body5.stl"/>
+        <mesh name="body6_mesh" file="Body6.stl"/>
+        <mesh name="body7_mesh" file="Body7.stl"/>
+        <mesh name="top_mesh" file="top_plate.stl"/>
+        <texture name="texplane" type="2d" builtin="checker" rgb1="1 1 1" rgb2=".1 .1 .1" 
+            width="512e-3" height="512e-3" mark="cross" markrgb=".8 .8 .8" />
+        <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="10 10" texuniform="true" />
+    </asset>
+    <!-- set some defaults for units and lighting -->
+    <compiler angle="degree" coordinate="local"/>
+	<option timestep="1e-4" gravity="0 0 -9.81" collision="predefined">
+		<flag sensornoise="disable" contact="enable" energy="enable"/>
+	</option>
+    <!-- Define All Assets-->
+    <worldbody>
+        <light pos="0 1 1" dir="0 -1 -1" diffuse="1 1 1"/>
+        <body name="floor" pos="0 0 0">
+            <geom name="floor" pos="0 0 -0.05" size="0 0 1" type="plane" 
+                material="matplane" rgba="0.5 0.5 0.5 0.5" /> 
+        </body>
+        <!-- 1st Module-->
+        <body name="body_1_1" pos="-17.5e-3 30.311e-3 0" euler="90 60 90">
+            <joint name="hinge_1_01" type="hinge" axis="0 1 0" pos="-21.5e-3 0 0" 
+                springdamper="0 0" limited="true" range="1 120"/>
+            <geom name="body_1_1" type="mesh" mesh="body1_mesh" pos="0 0 0" euler="0 180 0"/>
+            <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+            <site name="torque_sensor_1" pos="-21.5e-3 0 0"/>
+            <!-- nest each child piece inside the parent body tags -->
+            <body name="body_1_2" pos="0 0 0">
+                <joint name="hinge_1_12" type="hinge" axis="1 -1 0" pos="-6.25e-3 6.25e-3 0" 
+                    springdamper="0 0" limited="true" range="1 179"/>
+                <geom name="body_1_2" type="mesh" mesh="body2_mesh" pos="0 0 0" euler="0 180 0"/>
+                <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+
+                    <body name="body_1_4" pos="0 0 0">
+                        <joint name="hinge_1_24" type="hinge" axis="0 1 0" pos="0 -6.25e-3 0"
+                            springdamper="0 0" limited="true" range="1 179"/>
+                        <geom name="body_1_4" type="mesh" mesh="body4_mesh" pos="0 0 0" euler="0 180 0"/>
+                        <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+                    </body>
+            </body>
+
+            <body name="body_1_3" pos="0 0 0">
+                <joint name="hinge_1_13" type="hinge" axis="-1 -1 0" pos="-6.25e-3 -6.25e-3 0"
+                    springdamper="0 0" limited="true" range="1 179"/>
+                <geom name="body_1_3" type="mesh" mesh="body3_mesh" pos="0 0 0" euler="0 180 0"/>
+                <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+                <!-- nest each child piece inside the parent body tags -->
+                    <body name="body_1_5" pos="0 0 0">
+                        <joint name="hinge_1_25" type="hinge" axis="0 1 0" pos="0 6.25e-3 0"
+                            springdamper="0 0" limited="true" range="1 179"/>
+                        <geom name="body_1_5" type="mesh" mesh="body5_mesh" pos="0 0 0" euler="0 180 0"/>
+                        <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+
+                            <body name="body_1_6" pos="0 0 0">
+                                <joint name="hinge_1_56" type="hinge" axis="1 -1 0" pos="6.25e-3 -6.25e-3 0"
+                                    springdamper="0 0" limited="true" range="1 179"/>
+                                <geom name="body_1_6" type="mesh" mesh="body6_mesh" pos="0 0 0" euler="0 180 0"/>
+                                <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+
+                                    <body name="body_1_7" pos="0 0 0">
+                                        <joint name="hinge_1_67" type="hinge" axis="0 1 0" pos="30e-3 0 0"
+                                            springdamper="0 0" limited="true" range="-89 0"/>
+                                        <geom name="body_1_7" type="mesh" mesh="body7_mesh" pos="0 0 0" euler="0 180 0"/>
+                                        <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+                                        <body name="top_plate" pos="40.294e-3 0 0" euler="0 0 -90">
+                                            <geom name="top_plate" type="mesh" mesh="top_mesh" pos="0 0 0" euler="0 180 0"/>
+                                            <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+                                            <site name="top_sensor" pos="0 9.836e-3 0"/>
+<!--                                
+                                            <site name="tendon_2_0_a" pos="4.518e-3 21.682e-3 0"/>
+                                            <site name="tendon_2_0_b" pos="12.518e-3 7.825e-3 0"/>
+                                            <site name="tendon_3_0_a" pos="-4.518e-3 21.682e-3 0"/>
+                                            <site name="tendon_3_0_b" pos="-12.518e-3 7.825e-3 0"/>
+-->
+                                        </body>
+                                    </body>
+                            </body>
+                    </body>
+            </body>
+        </body>    
+
+        <!-- 2nd Module-->
+        <body name="body_2_1" pos="17.5e-3 30.311e-3 0" euler="90 -60 90">
+            <joint name="hinge_2_01" type="hinge" axis="0 1 0" pos="-21.5e-3 0 0" 
+                springdamper="0 0" limited="true" range="1 120"/>
+            <geom name="body_2_1" type="mesh" mesh="body1_mesh" pos="0 0 0" euler="0 180 0"/>
+            <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+            <site name="torque_sensor_2" pos="-21.5e-3 0 0"/>
+            <!-- nest each child piece inside the parent body tags -->
+            <body name="body_2_2" pos="0 0 0">
+                <joint name="hinge_2_12" type="hinge" axis="1 -1 0" pos="-6.25e-3 6.25e-3 0" 
+                    springdamper="0 0" limited="true" range="1 179"/>
+                <geom name="body_2_2" type="mesh" mesh="body2_mesh" pos="0 0 0" euler="0 180 0"/>
+                <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+
+                    <body name="body_2_4" pos="0 0 0">
+                        <joint name="hinge_2_24" type="hinge" axis="0 1 0" pos="0 -6.25e-3 0"
+                            springdamper="0 0" limited="true" range="1 179"/>
+                        <geom name="body_2_4" type="mesh" mesh="body4_mesh" pos="0 0 0" euler="0 180 0"/>
+                        <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+                    </body>
+            </body>
+
+            <body name="body_2_3" pos="0 0 0">
+                <joint name="hinge_2_13" type="hinge" axis="-1 -1 0" pos="-6.25e-3 -6.25e-3 0"
+                    springdamper="0 0" limited="true" range="1 120"/>
+                <geom name="body_2_3" type="mesh" mesh="body3_mesh" pos="0 0 0" euler="0 180 0"/>
+                <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+                <!-- nest each child piece inside the parent body tags -->
+                    <body name="body_2_5" pos="0 0 0">
+                        <joint name="hinge_2_25" type="hinge" axis="0 1 0" pos="0 6.25e-3 0"
+                            springdamper="0 0" limited="true" range="1 179"/>
+                        <geom name="body_2_5" type="mesh" mesh="body5_mesh" pos="0 0 0" euler="0 180 0"/>
+                        <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+
+                            <body name="body_2_6" pos="0 0 0">
+                                <joint name="hinge_2_56" type="hinge" axis="1 -1 0" pos="6.25e-3 -6.25e-3 0"
+                                    springdamper="0 0" limited="true" range="1 179"/>
+                                <geom name="body_2_6" type="mesh" mesh="body6_mesh" pos="0 0 0" euler="0 180 0"/>
+                                <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+
+                                    <body name="body_2_7" pos="0 0 0">
+                                        <joint name="hinge_2_67" type="hinge" axis="0 1 0" pos="30e-3 0 0"
+                                            springdamper="0 0" limited="true" range="-89 0"/>
+                                        <geom name="body_2_7" type="mesh" mesh="body7_mesh" pos="0 0 0" euler="0 180 0"/>
+                                        <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+<!--
+                                        <site name="tendon_2_1_a" pos="40.294e-3 -8e-3 0"/>
+                                        <site name="tendon_2_1_b" pos="40.294e-3 8e-3 0"/>
+-->
+                                    </body>
+                            </body>
+                    </body>
+            </body>
+        </body>    
+
+        <!-- 3rd Module-->
+        <body name="body_3_1" pos="0 0 0" euler="90 180 90">
+            <joint name="hinge_3_01" type="hinge" axis="0 1 0" pos="-21.5e-3 0 0" 
+                springdamper="0 0"limited="true" range="1 179"/>
+            <geom name="body_3_1" type="mesh" mesh="body1_mesh" pos="0 0 0" euler="0 180 0"/>
+            <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+            <site name="torque_sensor_3" pos="-21.5e-3 0 0"/>
+            <!-- nest each child piece inside the parent body tags -->
+            <body name="body_3_2" pos="0 0 0">
+                <joint name="hinge_3_12" type="hinge" axis="1 -1 0" pos="-6.25e-3 6.25e-3 0" 
+                    springdamper="0 0" limited="true" range="1 179"/>
+                <geom name="body_3_2" type="mesh" mesh="body2_mesh" pos="0 0 0" euler="0 180 0"/>
+                <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+
+                    <body name="body_3_4" pos="0 0 0">
+                        <joint name="hinge_3_24" type="hinge" axis="0 1 0" pos="0 -6.25e-3 0"
+                            springdamper="0 0" limited="true" range="1 179"/>
+                        <geom name="body_3_4" type="mesh" mesh="body4_mesh" pos="0 0 0" euler="0 180 0"/>
+                        <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+                    </body>
+            </body>
+
+            <body name="body_3_3" pos="0 0 0">
+                <joint name="hinge_3_13" type="hinge" axis="-1 -1 0" pos="-6.25e-3 -6.25e-3 0"
+                    springdamper="0 0" limited="true" range="1 179"/>
+                <geom name="body_3_3" type="mesh" mesh="body3_mesh" pos="0 0 0" euler="0 180 0"/>
+                <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+                <!-- nest each child piece inside the parent body tags -->
+                    <body name="body_3_5" pos="0 0 0">
+                        <joint name="hinge_3_25" type="hinge" axis="0 1 0" pos="0 6.25e-3 0"
+                            springdamper="0 0" limited="true" range="1 179"/>
+                        <geom name="body_3_5" type="mesh" mesh="body5_mesh" pos="0 0 0" euler="0 180 0"/>
+                        <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+
+                            <body name="body_3_6" pos="0 0 0">
+                                <joint name="hinge_3_56" type="hinge" axis="1 -1 0" pos="6.25e-3 -6.25e-3 0"
+                                    springdamper="0 0" limited="true" range="1 179"/>
+                                <geom name="body_3_6" type="mesh" mesh="body6_mesh" pos="0 0 0" euler="0 180 0"/>
+                                <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+
+                                    <body name="body_3_7" pos="0 0 0">
+                                        <joint name="hinge_3_67" type="hinge" axis="0 1 0" pos="30e-3 0 0"
+                                            springdamper="0 0" limited="true" range="-89 0"/>
+                                        <geom name="body_3_7" type="mesh" mesh="body7_mesh" pos="0 0 0" euler="0 180 0"/>
+                                        <inertial pos="0 0 0" mass="50e-3" diaginertia="1 1 1"/>
+<!--
+                                        <site name="tendon_3_1_a" pos="40.294e-3 8e-3 0"/>
+                                        <site name="tendon_3_1_b" pos="40.294e-3 -8e-3 0"/>
+-->
+                                    </body>
+                            </body>
+                    </body>
+            </body>
+        </body>    
+
+    </worldbody>
+
+    <equality>
+		<connect name="hinge_1_01" body1="body_1_4" active="true" body2="body_1_6" 
+            anchor="6.25e-3 6.25e-3 0" solref="2e-5 1"/>
+
+        <connect name="hinge_2_01" body1="body_2_4" active="true" body2="body_2_6" 
+            anchor="6.25e-3 6.25e-3 0" solref="2e-5 1"/>
+
+        <connect name="hinge_3_01" body1="body_3_4" active="true" body2="body_3_6" 
+            anchor="6.25e-3 6.25e-3 0" solref="2e-5 1"/>
+
+        <weld name="hinge_2_78" body1="top_plate" active="true" body2="body_2_7"
+            relpose="8.518e-3 14.754e-3 0 -0.258819 0 0 0.9659258 " anchor="40.294e-3 0 0"/>
+            
+        <weld name="hinge_3_78" body1="top_plate" active="true" body2="body_3_7"
+            relpose="-8.518e-3 14.754e-3 0 0.9659258 0 0 -0.258819" anchor="40.294e-3 0 0"/>
+
+	</equality>
+<!--
+    <tendon>
+        <spatial name="tendon_2_78_a" limited="true" range="0 1e-5">
+            <site site="tendon_2_0_a"/>
+            <site site="tendon_2_1_a"/>
+        </spatial>
+        
+        <spatial name="tendon_2_78_b" limited="true" range="0 1e-5">
+            <site site="tendon_2_0_b"/>
+            <site site="tendon_2_1_b"/>
+        </spatial>
+
+        <spatial name="tendon_3_78_a" limited="true" range="0 1e-5">
+            <site site="tendon_3_0_a"/>
+            <site site="tendon_3_1_a"/>
+        </spatial>
+
+        <spatial name="tendon_3_78_b" limited="true" range="0 1e-5">
+            <site site="tendon_3_0_b"/>
+            <site site="tendon_3_1_b"/>
+        </spatial>
+    </tendon>
+-->
+    <!-- Define Actuators -->
+    <actuator>
+        <general name="servo1" joint="hinge_1_01"/>
+        <general name="servo2" joint="hinge_2_01"/>
+        <general name="servo3" joint="hinge_3_01"/>
+    </actuator>
+
+    <sensor>
+        <torque name="torque_1" site="torque_sensor_1" />
+        <torque name="torque_2" site="torque_sensor_2" />
+        <torque name="torque_3" site="torque_sensor_3" />
+        <force name="force_top" site="top_sensor" />
+        <gyro name="gyro_top" site="top_sensor" />
+    </sensor>
+</mujoco>
