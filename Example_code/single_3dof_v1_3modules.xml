@@ -221,29 +221,7 @@
             relpose="-8.518e-3 14.754e-3 0 0.9659258 0 0 -0.258819" anchor="40.294e-3 0 0"/>
 
 	</equality>
-<!--
-    <tendon>
-        <spatial name="tendon_2_78_a" limited="true" range="0 1e-5">
-            <site site="tendon_2_0_a"/>
-            <site site="tendon_2_1_a"/>
-        </spatial>
-        
-        <spatial name="tendon_2_78_b" limited="true" range="0 1e-5">
-            <site site="tendon_2_0_b"/>
-            <site site="tendon_2_1_b"/>
-        </spatial>
 
-        <spatial name="tendon_3_78_a" limited="true" range="0 1e-5">
-            <site site="tendon_3_0_a"/>
-            <site site="tendon_3_1_a"/>
-        </spatial>
-
-        <spatial name="tendon_3_78_b" limited="true" range="0 1e-5">
-            <site site="tendon_3_0_b"/>
-            <site site="tendon_3_1_b"/>
-        </spatial>
-    </tendon>
--->
     <!-- Define Actuators -->
     <actuator>
         <general name="servo1" joint="hinge_1_01"/>
